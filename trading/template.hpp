@@ -147,4 +147,22 @@ public:
       return;
     }
   }
+
+  /**
+   * Called periodically with a complete snapshot of the orderbook.
+   *
+   * This provides the full current state of all bids and asks, useful for 
+   * verification and algorithms that need the complete market picture.
+   *
+   * @param ticker Ticker of the orderbook snapshot (Ticker::TEAM_A)
+   * @param bids   Vector of (price, quantity) pairs for all current bids, sorted by price descending
+   * @param asks   Vector of (price, quantity) pairs for all current asks, sorted by price ascending
+   */
+    virtual void on_orderbook_snapshot(
+        Ticker ticker,
+        const vector<pair<float, float>>& bids,
+        const vector<pair<float, float>>& asks)
+    {
+        // reset the state of local books
+    }
 };
